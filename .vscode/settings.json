@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "hal.h": "c",
+        "hal_uart.h": "c"
+    }
+}

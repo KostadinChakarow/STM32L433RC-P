@@ -34,6 +34,7 @@ static THD_FUNCTION(Thread1, arg) {
     chThdSleepMilliseconds(500);
   }
 }
+char test_array[] = "Hello World!";
 
 /*
  * Application entry point.
@@ -54,7 +55,7 @@ int main(void) {
    * Activates the serial driver 2 using the driver default configuration.
    */
   sdStart(&LPSD1, NULL);
-
+  
   /*
    * Creates the blinker thread.
    */
@@ -66,8 +67,11 @@ int main(void) {
    */
   while (true) {
     if (!palReadLine(LINE_BUTTON)) {
-      test_execute((BaseSequentialStream *)&LPSD1, &rt_test_suite);
-      test_execute((BaseSequentialStream *)&LPSD1, &oslib_test_suite);
+      //test_execute((BaseSequentialStream *)&LPSD1, &rt_test_suite);
+      //test_execute((BaseSequentialStream *)&LPSD1, &oslib_test_suite);
+      for(int i = 0; test_array[i] != '\0'; i++){
+        sdPut(&LPSD1, test_array[i]);
+      }
     }
     chThdSleepMilliseconds(500);
   }
