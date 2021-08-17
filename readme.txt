@@ -1,0 +1,1 @@
+Test NUCLEO-L433RC-P with ChibiOS-20.3.3
