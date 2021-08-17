@@ -176,6 +176,9 @@ RULESPATH = $(CHIBIOS)/os/common/startup/ARMCMx/compilers/GCC/mk
 include $(RULESPATH)/arm-none-eabi.mk
 include $(RULESPATH)/rules.mk
 
+# Program
+upload: build/$(PROJECT).bin
+	openocd -f board/stm32l4discovery.cfg -c "reset_config trst_only combined" -c "program build/$(PROJECT).elf verify reset exit"
 #
 # Common rules
 ##############################################################################
